@@ -1,0 +1,20 @@
+Source:
+    HUD Exchange (Dept. of Housing and Urban Development)
+https://www.hudexchange.info/programs/coc/coc-homeless-populations-and-subpopulations-reports/ 
+
+goes back to 2005
+recorded totals, unsheltered for each year, each level
+
+Levels
+    National
+        https://www.hudexchange.info/programs/coc/coc-homeless-populations-and-subpopulations-reports/?filter_Year=&filter_Scope=NatlTerrDC&filter_State=&filter_CoC=&program=CoC&group=PopSub
+    State
+        https://www.hudexchange.info/programs/coc/coc-homeless-populations-and-subpopulations-reports/?filter_Year=&filter_Scope=State&filter_State=WA&filter_CoC=&program=CoC&group=PopSub
+    CoC (Continuum of Care)
+        Spokane City and County
+        https://www.hudexchange.info/programs/coc/coc-homeless-populations-and-subpopulations-reports/?filter_Year=&filter_Scope=CoC&filter_State=WA&filter_CoC=WA-502&program=CoC&group=PopSub 
+
+        previous source
+            https://www.commerce.wa.gov/serving-communities/homelessness/annual-point-time-count/
+            only goes back to 2007
+            small discrepancies

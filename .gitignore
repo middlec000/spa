@@ -1,0 +1,13 @@
+# Data
+data
+
+# IDE Files
+.vscode
+
+# Pyenv
+spa_venv
+
+# Notebook Files
+code/*.ipynb
+*__pycache__/
+*.ipynb_checkpoints/
