@@ -1,6 +1,3 @@
-# Licensing
-Currently I have chosen to not license this repository. This means that no one besides myself has permission to copy, distribute, or modify this work. [More](https://choosealicense.com/no-permission/).
-
 # Project Overview
 ## Objective
 Predict the likelihood an individual will experience first-time homelessness based on their utility customer data.  
@@ -32,6 +29,8 @@ After investigation the features deemed useful and used for model fitting were:
 | PAST_DUE          | Past Due Notice                                                                                 | integer | Avista - collections activity                              |
 | SPA_PREM_ID       | Anonymized id mapping to an Avista premise.                                                     | integer | Avista                                                     |  
 
+<span style="color:red">**OUTDATED</span>
+
 ## Challenges
 ### Problem Framing
 It was unclear which problem framing would be most suitable for the given objective and available data, so several were investigated:
@@ -50,8 +49,8 @@ There were also instances where a single person was associated with multiple (lo
 ### Data Imbalance
 After preprocessing there were 357 positive cases and 91,234 negative cases. This made the prediction task of identifying the few positive cases difficult. Oversampling the positive class was employed, but it did not significantly improved model performance.
 
-# File Descriptions in Code/
-## [0_Data_Exploration.ipynb](code/0_Data_Exploration.ipynb)
+# File Descriptions in `code/`
+## Data_Exploration
 The data is explored using visual and numerical tools to answer several important questions about the data and investigate relationships within.
 ### Which Outcome Measure to Use?
 Determine which of several potential outcome measures is the most correlated with the provided data.
@@ -70,10 +69,6 @@ Look at the attributes most correlated with the outcome and assess how different
 ### Geographical
 Determine if there are any useful groupings of positives or negatives based on geographical attributes.
 
-## [helper_methods.py](code/helper_methods.py)
-Supporting methods used for various programming tasks in this project.
-
-## [preprocessing.py](code/preprocessing.py)
 ### Billing
 * Data is combined from multiple files.
 * New feature created for combined amount owed in all utilities bills each month by a single customer account.
@@ -97,17 +92,11 @@ Supporting methods used for various programming tasks in this project.
 * Create feature `NUM_PREM_FOR_PER`, the cumulative number of premises a person has paid bills at each month.
 * Create feature `NUM_PER_FOR_PREM`, the cumulative number of people a premises has seen for each month.
 
-## [log_fit.py](code/log_fit.py)
+## [Model Fitting](code/06_Logistic_Statsmodels.md)
 The method of K-Folds is employed with k=10 and the folds based on randomly choosing from the `SPA_PER_ID`s. For each of the 10 train/test data splits corresponding to the 10 folds, random oversampling was performed on the training set to balance the data. For each fold a logistic model is fit to the training data and predictions are made on the test data. A prediction is made for each (`SPA_PER_ID`, `SPA_PREM_ID`, `MONTH`). A single prediction for each person (`SPA_PER_ID`) is desired so the maximum prediction over all locations (`SPA_PREM_ID`s) and times (`MONTH`s) is retained as the final prediction for each person.  
 
 Various performance metrics are calculated for the predictions: tp, fp, tn, fn, tnr, ppv, npv, f-1 score, accuracy, balanced accuracy, area under the curve.  
 Definitions and descriptions at [https://en.wikipedia.org/wiki/Sensitivity_and_specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity).
 
-## [plot_roc.py](code/plot_roc.py)
-The performance of the model is displayed using a Receiver Operator Characteristic (ROC) plot.
-
-## [main.py](code/main.py)
-Uses previous files to perform preprocessing, model fitting, and ROC curve plotting all from one place.
-
-## [ROC_Curve.ipynb](code/ROC_Curve.ipynb)
-Another file for plotting the ROC Curve as well as comparing model performance to current research and printing average model parameters.
+## [Performance Plot](code/results_images/roc_log.png)
+The performance of the folds models are displayed using a Receiver Operator Characteristic (ROC) plot.
